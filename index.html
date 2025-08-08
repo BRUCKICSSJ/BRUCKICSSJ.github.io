@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Increíble Hombre Araña</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ff0000, #000080);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(220, 20, 60, 0.9);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 5px solid #FFD700;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 3px 3px 0 #000;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-menu a:hover {
+            background-color: #FFD700;
+            color: #DC143C;
+            border: 2px solid #000;
+            transform: scale(1.1);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            border: 4px solid #DC143C;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            color: #DC143C;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #000;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: #000080;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Cards Grid */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border-left: 6px solid #DC143C;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #DC143C, #FFD700, #000080);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(220, 20, 60, 0.3);
+        }
+
+        .card h3 {
+            color: #DC143C;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Powers section */
+        .powers-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .power-item {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 20px;
+            border-radius: 50px;
+            color: #000;
+            font-weight: bold;
+            border: 3px solid #DC143C;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            min-width: 200px;
+            text-align: center;
+        }
+
+        /* Colores CSS section */
+        .colors-showcase {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 3px dashed #DC143C;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .color-box {
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            border: 2px solid #000;
+        }
+
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+        .yellow { background-color: yellow; color: #000; }
+        .orange { background-color: orange; color: #000; }
+        .purple { background-color: purple; }
+        .pink { background-color: deeppink; }
+        .cyan { background-color: cyan; color: #000; }
+        .lime { background-color: lime; color: #000; }
+        .magenta { background-color: magenta; }
+        .brown { background-color: brown; }
+        .gray { background-color: gray; }
+
+        /* Box Model Demo */
+        .box-model-demo {
+            background: #f0f0f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 4px solid #000080;
+        }
+
+        .box-example {
+            background-color: #FFD700;
+            border: 10px solid #DC143C;
+            padding: 30px;
+            margin: 25px auto;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        /* Diferentes tipos de bordes */
+        .border-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .border-box {
+            padding: 20px;
+            text-align: center;
+            background: white;
+            margin: 10px;
+        }
+
+        .solid-border { border: 4px solid #DC143C; }
+        .dashed-border { border: 4px dashed #000080; }
+        .dotted-border { border: 4px dotted #FFD700; }
+        .double-border { border: 6px double #DC143C; }
+        .groove-border { border: 6px groove #000080; }
+        .ridge-border { border: 6px ridge #FFD700; }
+
+        /* Tipografías */
+        .typography-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 3px solid #000080;
+        }
+
+        .font-serif { font-family: 'Times New Roman', serif; }
+        .font-sans { font-family: 'Arial', sans-serif; }
+        .font-mono { font-family: 'Courier New', monospace; }
+        .font-impact { font-family: 'Impact', sans-serif; }
+
+        /* Footer */
+        .footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 5px solid #DC143C;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-icons a {
+            color: #FFD700;
+            font-size: 2em;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.3);
+            color: #DC143C;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .hero-title {
+                font-size: 2.5em;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes swing {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .spider-icon {
+            animation: swing 2s ease-in-out infinite;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">🕷️ SPIDERMAN</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#poderes">Poderes</a></li>
+                    <li><a href="#historia">Historia</a></li>
+                    <li><a href="#css">CSS Info</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="inicio" class="hero-section">
+            <h1 class="hero-title">EL HOMBRE ARAÑA <span class="spider-icon">🕷️</span></h1>
+            <p class="hero-subtitle">"Con un gran poder, viene una gran responsabilidad"</p>
+            <p>Bienvenido a la página web dedicada al superhéroe más querido de Marvel. Aquí encontrarás todo sobre Peter Parker y sus increíbles aventuras como el Hombre Araña.</p>
+        </section>
+
+        <div class="cards-container">
+            <div class="card">
+                <h3><i class="fas fa-user-secret"></i> Identidad Secreta</h3>
+                <p>Peter Parker es un estudiante de ciencias brillante que vive en Nueva York. Después de ser mordido por una araña radiactiva, desarrolló increíbles habilidades arácnidas.</p>
+                <p>Debe mantener en secreto su identidad para proteger a sus seres queridos, especialmente a su tía May.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-bolt"></i> Origen de sus Poderes</h3>
+                <p>Durante una excursión escolar a un laboratorio científico, Peter fue mordido por una araña que había sido expuesta a radiación experimental.</p>
+                <p>Esta mordida le otorgó habilidades sobrehumanas que cambiarían su vida para siempre.</p>
+            </div>
+
+            <div class="card">
+                <h3><i class="fas fa-heart"></i> Motivación</h3>
+                <p>La muerte de su tío Ben marcó profundamente a Peter. Las últimas palabras de Ben: "Con un gran poder viene una gran responsabilidad" se convirtieron en su filosofía de vida.</p>
+                <p>Esta tragedia lo motivó a usar sus poderes para ayudar a otros y combatir el crimen.</p>
+            </div>
+        </div>
+
+        <section id="poderes" class="colors-showcase">
+            <h2 style="color: #DC143C; text-align: center; font-size: 2.5em;">🕸️ SÚPER PODERES 🕸️</h2>
+            <div class="powers-grid">
+                <div class="power-item">🕷️ Fuerza Sobrehumana</div>
+                <div class="power-item">🕸️ Lanzatelarañas</div>
+                <div class="power-item">🔍 Sentido Arácnido</div>
+                <div class="power-item">🧗 Trepar Paredes</div>
+                <div class="power-item">⚡ Agilidad Extrema</div>
+                <div class="power-item">🎯 Reflejos Rápidos</div>
+            </div>
+        </section>
+
+        <section id="css" class="colors-showcase">
+            <h2 style="color: #000080; text-align: center; font-size: 2em;">🎨 Colores en CSS3</h2>
+            <p style="text-align: center; margin-bottom: 20px;">CSS3 soporta más de <strong>140 colores con nombre</strong>, además de millones de combinaciones usando hex, rgb, hsl y rgba!</p>
+            
+            <div class="color-grid">
+                <div class="color-box red">RED</div>
+                <div class="color-box blue">BLUE</div>
+                <div class="color-box green">GREEN</div>
+                <div class="color-box yellow">YELLOW</div>
+                <div class="color-box orange">ORANGE</div>
+                <div class="color-box purple">PURPLE</div>
+                <div class="color-box pink">PINK</div>
+                <div class="color-box cyan">CYAN</div>
+                <div class="color-box lime">LIME</div>
+                <div class="color-box magenta">MAGENTA</div>
+                <div class="color-box brown">BROWN</div>
+                <div class="color-box gray">GRAY</div>
+            </div>
+        </section>
+
+        <section class="box-model-demo">
+            <h2 style="text-align: center; color: #000080;">📦 BOX MODEL EN CSS</h2>
+            <p style="text-align: center; margin-bottom: 20px;">El Box Model incluye: Content, Padding, Border y Margin</p>
+            <div class="box-example">
+                <strong>CONTENIDO</strong><br>
+                Esta caja demuestra padding, border y margin trabajando juntos
+            </div>
+        </section>
+
+        <section class="colors-showcase">
+            <h2 style="color: #DC143C; text-align: center;">🔲 TIPOS DE BORDES</h2>
+            <div class="border-examples">
+                <div class="border-box solid-border">
+                    <strong>SOLID</strong><br>
+                    border: 4px solid #DC143C;
+                </div>
+                <div class="border-box dashed-border">
+                    <strong>DASHED</strong><br>
+                    border: 4px dashed #000080;
+                </div>
+                <div class="border-box dotted-border">
+                    <strong>DOTTED</strong><br>
+                    border: 4px dotted #FFD700;
+                </div>
+                <div class="border-box double-border">
+                    <strong>DOUBLE</strong><br>
+                    border: 6px double #DC143C;
+                </div>
+                <div class="border-box groove-border">
+                    <strong>GROOVE</strong><br>
+                    border: 6px groove #000080;
+                </div>
+                <div class="border-box ridge-border">
+                    <strong>RIDGE</strong><br>
+                    border: 6px ridge #FFD700;
+                </div>
+            </div>
+        </section>
+
+        <section class="typography-section">
+            <h2 style="text-align: center; color: #000080;">✍️ TIPOGRAFÍAS CSS</h2>
+            <div style="margin: 20px 0;">
+                <p class="font-serif" style="font-size: 1.3em; margin: 10px 0;">
+                    <strong>SERIF:</strong> Times New Roman - Elegante y clásica para textos largos
+                </p>
+                <p class="font-sans" style="font-size: 1.3em; margin: 10px 0;">
+                    <strong>SANS-SERIF:</strong> Arial - Moderna y limpia, perfecta para web
+                </p>
+                <p class="font-mono" style="font-size: 1.3em; margin: 10px 0;">
+                    <strong>MONOSPACE:</strong> Courier New - Ideal para código
+                </p>
+                <p class="font-impact" style="font-size: 1.5em; margin: 10px 0; color: #DC143C;">
+                    <strong>IMPACT:</strong> ¡PERFECTO PARA TÍTULOS DE SUPERHÉROES!
+                </p>
+            </div>
+        </section>
+
+        <section id="historia" class="hero-section">
+            <h2 style="color: #000080; margin-bottom: 20px;">📚 Historia del Personaje</h2>
+            <p style="text-align: left; font-size: 1.1em;">
+                Spider-Man fue creado por Stan Lee y Steve Ditko en 1962. Apareció por primera vez en "Amazing Fantasy #15". 
+                Lo que hizo único a este personaje fue mostrar a un superhéroe adolescente con problemas cotidianos reales.
+            </p>
+            <br>
+            <p style="text-align: left; font-size: 1.1em;">
+                A diferencia de otros superhéroes de la época, Peter Parker lidiaba con problemas económicos, 
+                el acoso escolar, y las dificultades de mantener una identidad secreta. Esto lo convirtió en 
+                uno de los personajes más queridos y relacionables del universo Marvel.
+            </p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2024 Página de Spider-Man. Proyecto educativo sobre CSS3.</p>
+        <p style="font-size: 0.9em; margin-top: 10px;">
+            <i class="fas fa-code"></i> Desarrollado con HTML5, CSS3 y mucho ❤️ por Spider-Man
+        </p>
+    </footer>
+</body>
+</html>
