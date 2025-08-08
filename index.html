@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Increíble Hombre Araña</title>
+    <title>Spider-Man: El Héroe de Nueva York</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
@@ -17,19 +16,19 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #ff0000, #000080);
+            background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
             min-height: 100vh;
         }
 
-        /* Header */
+        /* Header con navegación sticky */
         .header {
-            background-color: rgba(220, 20, 60, 0.9);
-            padding: 1rem 0;
+            background: rgba(220, 20, 60, 0.95);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 5px solid #FFD700;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            border-bottom: 4px solid #ffd700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
         .nav-container {
@@ -41,447 +40,639 @@
             padding: 0 20px;
         }
 
-        .logo {
-            font-size: 2.5em;
+        .logo-spiderman {
+            font-size: 2.2em;
             font-weight: bold;
-            color: #FFD700;
-            text-shadow: 3px 3px 0 #000;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-
-        .nav-menu a:hover {
-            background-color: #FFD700;
-            color: #DC143C;
-            border: 2px solid #000;
-            transform: scale(1.1);
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .hero-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            border: 4px solid #DC143C;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            text-align: center;
-        }
-
-        .hero-title {
-            font-size: 3.5em;
-            color: #DC143C;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0 #000;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px #000;
             font-family: 'Impact', sans-serif;
         }
 
-        .hero-subtitle {
-            font-size: 1.5em;
-            color: #000080;
-            margin-bottom: 30px;
-            font-style: italic;
+        .menu-navegacion {
+            display: flex;
+            list-style: none;
+            gap: 25px;
         }
 
-        /* Cards Grid */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+        .menu-item {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 18px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 2px dashed transparent;
         }
 
-        .card {
-            background: white;
-            border-radius: 15px;
+        .menu-item:hover {
+            background: #ffd700;
+            color: #dc143c;
+            border: 2px dashed #000;
+            transform: scale(1.05);
+        }
+
+        /* Sección principal */
+        .contenedor-principal {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 25px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            border-left: 6px solid #DC143C;
-            transition: transform 0.3s ease;
+        }
+
+        .seccion-hero {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 25px;
+            padding: 45px;
+            margin: 35px 0;
+            border: 5px solid #dc143c;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .card::before {
+        .seccion-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #DC143C, #FFD700, #000080);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(220,20,60,0.1) 0%, transparent 70%);
+            animation: girar-web 20s linear infinite;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(220, 20, 60, 0.3);
+        @keyframes girar-web {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .card h3 {
-            color: #DC143C;
-            font-size: 1.8em;
-            margin-bottom: 15px;
+        .titulo-principal {
+            font-size: 3.8em;
+            color: #dc143c;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 0 #000;
+            font-family: 'Impact', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitulo-hero {
+            font-size: 1.6em;
+            color: #000080;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-family: 'Times New Roman', serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .descripcion-hero {
+            font-size: 1.1em;
+            color: #444;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Grid de información */
+        .grid-informacion {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 45px 0;
+        }
+
+        .tarjeta-info {
+            background: linear-gradient(135deg, white, #f8f8ff);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-left: 8px groove #dc143c;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .tarjeta-info:nth-child(even) {
+            border-left: 8px ridge #000080;
+        }
+
+        .tarjeta-info:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.25);
+            background: linear-gradient(135deg, #fffaf0, white);
+        }
+
+        .titulo-tarjeta {
+            color: #dc143c;
+            font-size: 1.9em;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-family: 'Arial', sans-serif;
         }
 
-        .card p {
+        .contenido-tarjeta {
             color: #555;
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 15px;
         }
 
-        /* Powers section */
-        .powers-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
-            margin: 30px 0;
+        /* Sección de poderes con diferentes bordes */
+        .seccion-poderes {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 35px 0;
+            border: 4px dotted #000080;
+            position: relative;
         }
 
-        .power-item {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            padding: 20px;
-            border-radius: 50px;
+        .titulo-poderes {
+            text-align: center;
+            color: #dc143c;
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .grid-poderes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .poder-individual {
+            background: linear-gradient(45deg, #ffd700, #ff6b35);
+            padding: 25px;
+            border-radius: 15px;
             color: #000;
             font-weight: bold;
-            border: 3px solid #DC143C;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            min-width: 200px;
             text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            border: 3px solid #dc143c;
+            transition: all 0.3s ease;
+            font-family: 'Arial', sans-serif;
         }
 
-        /* Colores CSS section */
-        .colors-showcase {
-            background: white;
+        .poder-individual:nth-child(2) { border: 3px double #000080; }
+        .poder-individual:nth-child(3) { border: 3px dashed #8b0000; }
+        .poder-individual:nth-child(4) { border: 3px solid #2f4f4f; }
+
+        .poder-individual:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #ff6b35, #ffd700);
+        }
+
+        /* Sección origen con box model visible */
+        .seccion-origen {
+            background: #f5f5dc;
+            border: 6px solid #8b4513;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 800px;
+            border-radius: 25px;
+            box-shadow: inset 0 0 20px rgba(139, 69, 19, 0.3);
+        }
+
+        .titulo-origen {
+            color: #8b0000;
+            font-size: 2.3em;
+            text-align: center;
+            margin-bottom: 25px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .texto-origen {
+            color: #2f4f4f;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* Galería de enemigos */
+        .galeria-enemigos {
+            background: rgba(0, 0, 0, 0.85);
             border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 3px dashed #DC143C;
+            padding: 35px;
+            margin: 35px 0;
+            border: 5px ridge #dc143c;
         }
 
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+        .titulo-enemigos {
+            color: #ffd700;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Impact', sans-serif;
+            text-shadow: 2px 2px 4px #000;
         }
 
-        .color-box {
-            height: 80px;
-            border-radius: 10px;
+        .lista-enemigos {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-            border: 2px solid #000;
-        }
-
-        .red { background-color: red; }
-        .blue { background-color: blue; }
-        .green { background-color: green; }
-        .yellow { background-color: yellow; color: #000; }
-        .orange { background-color: orange; color: #000; }
-        .purple { background-color: purple; }
-        .pink { background-color: deeppink; }
-        .cyan { background-color: cyan; color: #000; }
-        .lime { background-color: lime; color: #000; }
-        .magenta { background-color: magenta; }
-        .brown { background-color: brown; }
-        .gray { background-color: gray; }
-
-        /* Box Model Demo */
-        .box-model-demo {
-            background: #f0f0f0;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 4px solid #000080;
-        }
-
-        .box-example {
-            background-color: #FFD700;
-            border: 10px solid #DC143C;
-            padding: 30px;
-            margin: 25px auto;
-            max-width: 400px;
-            text-align: center;
-            border-radius: 20px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        /* Diferentes tipos de bordes */
-        .border-examples {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            flex-wrap: wrap;
+            justify-content: space-around;
             gap: 20px;
-            margin: 30px 0;
         }
 
-        .border-box {
+        .enemigo-card {
+            background: linear-gradient(135deg, #4b0082, #8b0000);
+            color: white;
             padding: 20px;
+            border-radius: 12px;
+            min-width: 180px;
             text-align: center;
-            background: white;
-            margin: 10px;
+            border: 2px groove #ffd700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
 
-        .solid-border { border: 4px solid #DC143C; }
-        .dashed-border { border: 4px dashed #000080; }
-        .dotted-border { border: 4px dotted #FFD700; }
-        .double-border { border: 6px double #DC143C; }
-        .groove-border { border: 6px groove #000080; }
-        .ridge-border { border: 6px ridge #FFD700; }
+        .enemigo-card:nth-child(even) {
+            background: linear-gradient(135deg, #006400, #8b0000);
+            border: 2px ridge #ffd700;
+        }
 
-        /* Tipografías */
-        .typography-section {
+        .enemigo-nombre {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Sección de citas famosas */
+        .seccion-citas {
+            background: rgba(255, 255, 255, 0.95);
+            border: 4px groove #000080;
+            border-radius: 20px;
+            padding: 35px;
+            margin: 35px 0;
+        }
+
+        .titulo-citas {
+            color: #dc143c;
+            font-size: 2.4em;
+            text-align: center;
+            margin-bottom: 25px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .cita-individual {
+            background: linear-gradient(to right, #e6e6fa, #f0f8ff);
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 6px solid #dc143c;
+            border-radius: 10px;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #2f4f4f;
+            position: relative;
+        }
+
+        .cita-individual::before {
+            content: '"';
+            font-size: 4em;
+            color: #dc143c;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .autor-cita {
+            text-align: right;
+            font-weight: bold;
+            color: #000080;
+            margin-top: 10px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Timeline de Spider-Man */
+        .timeline-spiderman {
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            border: 3px solid #000080;
+            border: 3px double #8b0000;
+            border-radius: 20px;
+            padding: 35px;
+            margin: 35px 0;
         }
 
-        .font-serif { font-family: 'Times New Roman', serif; }
-        .font-sans { font-family: 'Arial', sans-serif; }
-        .font-mono { font-family: 'Courier New', monospace; }
-        .font-impact { font-family: 'Impact', sans-serif; }
+        .titulo-timeline {
+            color: #8b0000;
+            font-size: 2.6em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Impact', sans-serif;
+        }
+
+        .evento-timeline {
+            border-left: 4px solid #dc143c;
+            padding-left: 25px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .evento-timeline::before {
+            content: '🕷️';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            background: white;
+            border: 3px solid #dc143c;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 1.2em;
+        }
+
+        .año-evento {
+            color: #000080;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .descripcion-evento {
+            color: #444;
+            line-height: 1.6;
+        }
 
         /* Footer */
-        .footer {
-            background-color: #000;
+        .pie-pagina {
+            background: linear-gradient(135deg, #000, #2f4f4f);
             color: white;
             text-align: center;
-            padding: 30px;
+            padding: 35px;
             margin-top: 50px;
-            border-top: 5px solid #DC143C;
+            border-top: 6px ridge #dc143c;
         }
 
-        .social-icons {
-            margin: 20px 0;
+        .iconos-sociales {
+            margin: 25px 0;
             display: flex;
             justify-content: center;
             gap: 30px;
         }
 
-        .social-icons a {
-            color: #FFD700;
-            font-size: 2em;
-            transition: transform 0.3s ease;
+        .icono-social {
+            color: #ffd700;
+            font-size: 2.2em;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            padding: 10px;
+            border-radius: 50%;
         }
 
-        .social-icons a:hover {
-            transform: scale(1.3);
-            color: #DC143C;
+        .icono-social:hover {
+            transform: scale(1.2);
+            color: #dc143c;
+            border: 2px dotted #ffd700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .copyright-info {
+            font-family: 'Courier New', monospace;
+            margin-top: 15px;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
+            .menu-navegacion {
                 flex-direction: column;
                 gap: 10px;
             }
             
-            .hero-title {
+            .titulo-principal {
                 font-size: 2.5em;
             }
             
-            .cards-container {
+            .grid-informacion,
+            .grid-poderes {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* Animaciones */
-        @keyframes swing {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(5deg); }
+        /* Animación para el spider */
+        @keyframes balanceo-spider {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
         }
 
-        .spider-icon {
-            animation: swing 2s ease-in-out infinite;
+        .spider-animado {
             display: inline-block;
+            animation: balanceo-spider 3s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="nav-container">
-            <div class="logo">🕷️ SPIDERMAN</div>
+            <div class="logo-spiderman">🕷️ SPIDER-MAN</div>
             <nav>
-                <ul class="nav-menu">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#poderes">Poderes</a></li>
-                    <li><a href="#historia">Historia</a></li>
-                    <li><a href="#css">CSS Info</a></li>
+                <ul class="menu-navegacion">
+                    <li><a href="#inicio" class="menu-item">Inicio</a></li>
+                    <li><a href="#poderes" class="menu-item">Poderes</a></li>
+                    <li><a href="#origen" class="menu-item">Origen</a></li>
+                    <li><a href="#enemigos" class="menu-item">Enemigos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <div class="container">
-        <section id="inicio" class="hero-section">
-            <h1 class="hero-title">EL HOMBRE ARAÑA <span class="spider-icon">🕷️</span></h1>
-            <p class="hero-subtitle">"Con un gran poder, viene una gran responsabilidad"</p>
-            <p>Bienvenido a la página web dedicada al superhéroe más querido de Marvel. Aquí encontrarás todo sobre Peter Parker y sus increíbles aventuras como el Hombre Araña.</p>
+    <div class="contenedor-principal">
+        <section id="inicio" class="seccion-hero">
+            <h1 class="titulo-principal">EL INCREÍBLE SPIDER-MAN <span class="spider-animado">🕷️</span></h1>
+            <p class="subtitulo-hero">"Tu Amigable Vecino de Nueva York"</p>
+            <p class="descripcion-hero">
+                Conoce la historia del joven Peter Parker, quien después de ser mordido por una araña radiactiva, 
+                se convirtió en uno de los superhéroes más queridos del mundo. Con sus increíbles habilidades 
+                arácnidas y su fuerte sentido de responsabilidad, protege las calles de Nueva York día y noche.
+            </p>
         </section>
 
-        <div class="cards-container">
-            <div class="card">
-                <h3><i class="fas fa-user-secret"></i> Identidad Secreta</h3>
-                <p>Peter Parker es un estudiante de ciencias brillante que vive en Nueva York. Después de ser mordido por una araña radiactiva, desarrolló increíbles habilidades arácnidas.</p>
-                <p>Debe mantener en secreto su identidad para proteger a sus seres queridos, especialmente a su tía May.</p>
+        <div class="grid-informacion">
+            <div class="tarjeta-info">
+                <h3 class="titulo-tarjeta">
+                    <i class="fas fa-mask"></i> Identidad
+                </h3>
+                <p class="contenido-tarjeta">
+                    Peter Benjamin Parker nació en Queens, Nueva York. Huérfano desde temprana edad, 
+                    fue criado por sus tíos Ben y May Parker. Es un genio científico que estudió en 
+                    la Universidad Empire State y trabaja como fotógrafo freelance para el Daily Bugle.
+                </p>
+                <p class="contenido-tarjeta">
+                    Su vida cambió para siempre cuando tenía 15 años durante una exhibición científica.
+                </p>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-bolt"></i> Origen de sus Poderes</h3>
-                <p>Durante una excursión escolar a un laboratorio científico, Peter fue mordido por una araña que había sido expuesta a radiación experimental.</p>
-                <p>Esta mordida le otorgó habilidades sobrehumanas que cambiarían su vida para siempre.</p>
+            <div class="tarjeta-info">
+                <h3 class="titulo-tarjeta">
+                    <i class="fas fa-heart"></i> Filosofía
+                </h3>
+                <p class="contenido-tarjeta">
+                    "Con un gran poder viene una gran responsabilidad" - estas palabras de su tío Ben 
+                    se convirtieron en el principio rector de la vida de Peter como Spider-Man.
+                </p>
+                <p class="contenido-tarjeta">
+                    A pesar de los sacrificios personales que debe hacer, nunca deja de luchar por 
+                    proteger a los inocentes y hacer del mundo un lugar mejor.
+                </p>
             </div>
 
-            <div class="card">
-                <h3><i class="fas fa-heart"></i> Motivación</h3>
-                <p>La muerte de su tío Ben marcó profundamente a Peter. Las últimas palabras de Ben: "Con un gran poder viene una gran responsabilidad" se convirtieron en su filosofía de vida.</p>
-                <p>Esta tragedia lo motivó a usar sus poderes para ayudar a otros y combatir el crimen.</p>
+            <div class="tarjeta-info">
+                <h3 class="titulo-tarjeta">
+                    <i class="fas fa-city"></i> Su Ciudad
+                </h3>
+                <p class="contenido-tarjeta">
+                    Nueva York es más que solo el hogar de Spider-Man; es parte integral de su identidad. 
+                    Desde los rascacielos de Manhattan hasta los barrios de Queens, conoce cada calle 
+                    y callejón de la gran manzana.
+                </p>
+                <p class="contenido-tarjeta">
+                    Los neoyorquinos lo ven como su protector local, aunque algunos medios lo pinten como una amenaza.
+                </p>
             </div>
         </div>
 
-        <section id="poderes" class="colors-showcase">
-            <h2 style="color: #DC143C; text-align: center; font-size: 2.5em;">🕸️ SÚPER PODERES 🕸️</h2>
-            <div class="powers-grid">
-                <div class="power-item">🕷️ Fuerza Sobrehumana</div>
-                <div class="power-item">🕸️ Lanzatelarañas</div>
-                <div class="power-item">🔍 Sentido Arácnido</div>
-                <div class="power-item">🧗 Trepar Paredes</div>
-                <div class="power-item">⚡ Agilidad Extrema</div>
-                <div class="power-item">🎯 Reflejos Rápidos</div>
-            </div>
-        </section>
-
-        <section id="css" class="colors-showcase">
-            <h2 style="color: #000080; text-align: center; font-size: 2em;">🎨 Colores en CSS3</h2>
-            <p style="text-align: center; margin-bottom: 20px;">CSS3 soporta más de <strong>140 colores con nombre</strong>, además de millones de combinaciones usando hex, rgb, hsl y rgba!</p>
-            
-            <div class="color-grid">
-                <div class="color-box red">RED</div>
-                <div class="color-box blue">BLUE</div>
-                <div class="color-box green">GREEN</div>
-                <div class="color-box yellow">YELLOW</div>
-                <div class="color-box orange">ORANGE</div>
-                <div class="color-box purple">PURPLE</div>
-                <div class="color-box pink">PINK</div>
-                <div class="color-box cyan">CYAN</div>
-                <div class="color-box lime">LIME</div>
-                <div class="color-box magenta">MAGENTA</div>
-                <div class="color-box brown">BROWN</div>
-                <div class="color-box gray">GRAY</div>
-            </div>
-        </section>
-
-        <section class="box-model-demo">
-            <h2 style="text-align: center; color: #000080;">📦 BOX MODEL EN CSS</h2>
-            <p style="text-align: center; margin-bottom: 20px;">El Box Model incluye: Content, Padding, Border y Margin</p>
-            <div class="box-example">
-                <strong>CONTENIDO</strong><br>
-                Esta caja demuestra padding, border y margin trabajando juntos
-            </div>
-        </section>
-
-        <section class="colors-showcase">
-            <h2 style="color: #DC143C; text-align: center;">🔲 TIPOS DE BORDES</h2>
-            <div class="border-examples">
-                <div class="border-box solid-border">
-                    <strong>SOLID</strong><br>
-                    border: 4px solid #DC143C;
+        <section id="poderes" class="seccion-poderes">
+            <h2 class="titulo-poderes">🕸️ HABILIDADES ARÁCNIDAS 🕸️</h2>
+            <div class="grid-poderes">
+                <div class="poder-individual">
+                    <i class="fas fa-dumbbell"></i><br>
+                    <strong>SUPER FUERZA</strong><br>
+                    Puede levantar hasta 10 toneladas
                 </div>
-                <div class="border-box dashed-border">
-                    <strong>DASHED</strong><br>
-                    border: 4px dashed #000080;
+                <div class="poder-individual">
+                    <i class="fas fa-running"></i><br>
+                    <strong>AGILIDAD EXTREMA</strong><br>
+                    Reflejos 40 veces superiores al humano promedio
                 </div>
-                <div class="border-box dotted-border">
-                    <strong>DOTTED</strong><br>
-                    border: 4px dotted #FFD700;
+                <div class="poder-individual">
+                    <i class="fas fa-eye"></i><br>
+                    <strong>SENTIDO ARÁCNIDO</strong><br>
+                    Detecta peligros antes de que sucedan
                 </div>
-                <div class="border-box double-border">
-                    <strong>DOUBLE</strong><br>
-                    border: 6px double #DC143C;
+                <div class="poder-individual">
+                    <i class="fas fa-mountain"></i><br>
+                    <strong>ADHERENCIA</strong><br>
+                    Puede trepar cualquier superficie
                 </div>
-                <div class="border-box groove-border">
-                    <strong>GROOVE</strong><br>
-                    border: 6px groove #000080;
+                <div class="poder-individual">
+                    <i class="fas fa-project-diagram"></i><br>
+                    <strong>LANZA-TELARAÑAS</strong><br>
+                    Dispositivos que disparan telarañas sintéticas
                 </div>
-                <div class="border-box ridge-border">
-                    <strong>RIDGE</strong><br>
-                    border: 6px ridge #FFD700;
+                <div class="poder-individual">
+                    <i class="fas fa-brain"></i><br>
+                    <strong>GENIO CIENTÍFICO</strong><br>
+                    Intelecto nivel genio en ciencias
                 </div>
             </div>
         </section>
 
-        <section class="typography-section">
-            <h2 style="text-align: center; color: #000080;">✍️ TIPOGRAFÍAS CSS</h2>
-            <div style="margin: 20px 0;">
-                <p class="font-serif" style="font-size: 1.3em; margin: 10px 0;">
-                    <strong>SERIF:</strong> Times New Roman - Elegante y clásica para textos largos
-                </p>
-                <p class="font-sans" style="font-size: 1.3em; margin: 10px 0;">
-                    <strong>SANS-SERIF:</strong> Arial - Moderna y limpia, perfecta para web
-                </p>
-                <p class="font-mono" style="font-size: 1.3em; margin: 10px 0;">
-                    <strong>MONOSPACE:</strong> Courier New - Ideal para código
-                </p>
-                <p class="font-impact" style="font-size: 1.5em; margin: 10px 0; color: #DC143C;">
-                    <strong>IMPACT:</strong> ¡PERFECTO PARA TÍTULOS DE SUPERHÉROES!
-                </p>
-            </div>
-        </section>
-
-        <section id="historia" class="hero-section">
-            <h2 style="color: #000080; margin-bottom: 20px;">📚 Historia del Personaje</h2>
-            <p style="text-align: left; font-size: 1.1em;">
-                Spider-Man fue creado por Stan Lee y Steve Ditko en 1962. Apareció por primera vez en "Amazing Fantasy #15". 
-                Lo que hizo único a este personaje fue mostrar a un superhéroe adolescente con problemas cotidianos reales.
+        <section id="origen" class="seccion-origen">
+            <h2 class="titulo-origen">🧬 EL ORIGEN DE UN HÉROE</h2>
+            <p class="texto-origen">
+                Todo comenzó durante una excursión escolar a los laboratorios de investigación de Oscorp. 
+                Peter Parker, un estudiante tímido y brillante, fue mordido por una araña que había sido 
+                expuesta a radiación experimental durante un experimento sobre mejoramiento genético.
             </p>
-            <br>
-            <p style="text-align: left; font-size: 1.1em;">
-                A diferencia de otros superhéroes de la época, Peter Parker lidiaba con problemas económicos, 
-                el acoso escolar, y las dificultades de mantener una identidad secreta. Esto lo convirtió en 
-                uno de los personajes más queridos y relacionables del universo Marvel.
+            <p class="texto-origen">
+                Al principio, Peter experimentó síntomas similares a la gripe, pero pronto descubrió que 
+                había desarrollado habilidades extraordinarias: fuerza sobrehumana, la capacidad de 
+                adherirse a las paredes, reflejos mejorados y un "sentido arácnido" que le advertía del peligro.
             </p>
+            <p class="texto-origen">
+                Inicialmente, Peter usó sus poderes para ganar dinero en peleas de lucha libre. Sin embargo, 
+                su vida cambió trágicamente cuando un ladrón que él pudo haber detenido asesinó a su querido 
+                tío Ben. Fue entonces cuando comprendió el verdadero significado de las palabras de su tío: 
+                "Con un gran poder viene una gran responsabilidad."
+            </p>
+        </section>
+
+        <section id="enemigos" class="galeria-enemigos">
+            <h2 class="titulo-enemigos">👹 GALERÍA DE VILLANOS</h2>
+            <div class="lista-enemigos">
+                <div class="enemigo-card">
+                    <div class="enemigo-nombre">DUENDE VERDE</div>
+                    <p>Norman Osborn - Su némesis más peligroso</p>
+                </div>
+                <div class="enemigo-card">
+                    <div class="enemigo-nombre">DOCTOR OCTOPUS</div>
+                    <p>Otto Octavius - Genio científico con brazos mecánicos</p>
+                </div>
+                <div class="enemigo-card">
+                    <div class="enemigo-nombre">VENOM</div>
+                    <p>Simbionte alienígena con sed de venganza</p>
+                </div>
+                <div class="enemigo-card">
+                    <div class="enemigo-nombre">SANDMAN</div>
+                    <p>Flint Marko - Puede transformarse en arena</p>
+                </div>
+                <div class="enemigo-card">
+                    <div class="enemigo-nombre">MYSTERIO</div>
+                    <p>Quentin Beck - Maestro de las ilusiones</p>
+                </div>
+                <div class="enemigo-card">
+                    <div class="enemigo-nombre">KRAVEN</div>
+                    <p>El cazador más peligroso del mundo</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-citas">
+            <h2 class="titulo-citas">💬 FRASES MEMORABLES</h2>
+            <div class="cita-individual">
+                Con un gran poder viene una gran responsabilidad.
+                <div class="autor-cita">- Tío Ben Parker</div>
+            </div>
+            <div class="cita-individual">
+                Cualquiera puede usar una máscara. Cualquiera puede ser un héroe.
+                <div class="autor-cita">- Spider-Man</div>
+            </div>
+            <div class="cita-individual">
+                No importa cuántas veces me derriben, siempre me levanto.
+                <div class="autor-cita">- Peter Parker</div>
+            </div>
+        </section>
+
+        <section class="timeline-spiderman">
+            <h2 class="titulo-timeline">📅 CRONOLOGÍA DE SPIDER-MAN</h2>
+            <div class="evento-timeline">
+                <div class="año-evento">1962</div>
+                <div class="descripcion-evento">
+                    Primera aparición de Spider-Man en Amazing Fantasy #15, creado por Stan Lee y Steve Ditko.
+                </div>
+            </div>
+            <div class="evento-timeline">
+                <div class="año-evento">2002</div>
+                <div class="descripcion-evento">
+                    Primera película de Spider-Man dirigida por Sam Raimi, protagonizada por Tobey Maguire.
+                </div>
+            </div>
+            <div class="evento-timeline">
+                <div class="año-evento">2012</div>
+                <div class="descripcion-evento">
+                    The Amazing Spider-Man reinicia la franquicia cinematográfica con Andrew Garfield.
+                </div>
+            </div>
+            <div class="evento-timeline">
+                <div class="año-evento">2016</div>
+                <div class="descripcion-evento">
+                    Spider-Man se une al Universo Cinematográfico de Marvel con Tom Holland.
+                </div>
+            </div>
         </section>
     </div>
 
-    <footer class="footer">
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="pie-pagina">
+        <div class="iconos-sociales">
+            <a href="#" class="icono-social"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="icono-social"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="icono-social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="icono-social"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>&copy; 2024 Página de Spider-Man. Proyecto educativo sobre CSS3.</p>
-        <p style="font-size: 0.9em; margin-top: 10px;">
-            <i class="fas fa-code"></i> Desarrollado con HTML5, CSS3 y mucho ❤️ por Spider-Man
+        <p>&copy; 2024 Spider-Man Fan Page. Proyecto educativo sobre el amigable vecino.</p>
+        <p class="copyright-info">
+            <i class="fas fa-code"></i> Desarrollado con HTML5 y CSS3 | <i class="fas fa-heart"></i> Hecho por un fan
         </p>
     </footer>
 </body>
